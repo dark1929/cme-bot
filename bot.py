@@ -76,4 +76,4 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)}')
 
-bot.run('MTAwMTYxNzA2MTAxOTE0MDIwOA.G_N5cO.LHNbkOyGjOCX1wbzeM2TZDYdjtaJ6JY4XC9Kgc')
+bot.run('') # add key here
