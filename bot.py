@@ -76,4 +76,18 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)}')
 
+@bot.commands.cooldown(1, 10, commands.BucketType.user)
+@bot.command()
+async def tc(ctx, **kwargs):
+    kwargs = ctx.message.content()
+    _ = {
+        "leetcoins" : 0,
+    }
+    _.update(kwargs)
+    try:
+        tc_value = _['leetcoins'] * 1.25
+        await ctx.send(f'{ctx.message.mentions[0]}\'s estimated TC is {tc_value:,}k, which is roughly {tc_value/12:,}k after tax.')
+    except KeyError:
+        await ctx.send('Go back to elementary school to learn algorithms and data structures retard.')
+
 bot.run('') # add key here
