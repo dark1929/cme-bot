@@ -85,9 +85,9 @@ async def tc(ctx, **kwargs):
     }
     _.update(kwargs)
     try:
-        tc_value = _['leetcoins'] * 1.25
+        tc_value = _['leetcoins'] * 3.141592
         await ctx.send(f'{ctx.message.mentions[0]}\'s estimated TC is {tc_value:,}k, which is roughly {tc_value/12:,}k after tax.')
     except KeyError:
-        await ctx.send('Go back to elementary school to learn algorithms and data structures retard.')
+        await ctx.send('Go back to elementary school, seriously.')
 
 bot.run('') # add key here
