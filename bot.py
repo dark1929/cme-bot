@@ -69,25 +69,25 @@ async def jizzon(ctx):
     '        :trumpet:     :eggplant:                       :sweat_drops:\n' + \
     '          :boot:     :boot:                              :persevere:{}\n'.format(ctx.message.mentions[0].mention)
     await ctx.send(res)
-    
+
+@bot.commands.cooldown(1, 10, commands.BucketType.user)
+@bot.command()
+async def tc(ctx, **kwargs):
+    args = ctx.message.content()
+    user = {
+        'leetcoins': args
+    }
+    user_leetcoins = int(user['leetcoins'])
+
+    try:
+        user_tc = (user_leetcoins + 2) * 3.141592
+        await ctx.send(f'{ctx.message.mentions[0]}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
+    except:
+        await ctx.send('Go back to elementary school and learn some algorithms and data structures.')
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.send(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)}')
-
-@bot.commands.cooldown(1, 10, commands.BucketType.user)
-@bot.command()
-async def tc(ctx, **kwargs):
-    kwargs = ctx.message.content()
-    _ = {
-        "leetcoins" : 0,
-    }
-    _.update(kwargs)
-    try:
-        tc_value = _['leetcoins'] * 3.141592
-        await ctx.send(f'{ctx.message.mentions[0]}\'s estimated TC is {tc_value:,}k, which is roughly {tc_value/12:,}k after tax.')
-    except KeyError:
-        await ctx.send('Go back to elementary school, seriously.')
 
 bot.run('') # add key here
