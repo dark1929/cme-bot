@@ -75,7 +75,7 @@ async def jizzon(ctx):
 async def tc(ctx):
     args = ctx.message.content
     user_data = {
-        'leetcoins': args
+        'leetcoins' : args
     }
     user_leetcoins = int(user_data['leetcoins'])
 
@@ -89,6 +89,16 @@ async def tc(ctx):
 @bot.command()
 async def bassfx(ctx): 
     await ctx.send('https://cdn.discordapp.com/attachments/832736860886663170/997248777016594462/attachment.gif') 
+
+@commands.cooldown(1, 30, commands.BucketType.user)
+@bot.command()
+async def dark(ctx): 
+    await ctx.send('''https://media.discordapp.net/attachments/966368180723400786/1006982434472067153/IMG_2664.png?width=565&height=524
+    **Hey guys, dark here. 8 years ago I said "One Day". Today, I get to say "Day One".
+    I'm happy to announce that today I landed my dream job as a junior software engineer at Google where I'll be working with some of the smartest people in the world.
+    I would like to thank my mom, my dad, and my discord friends for the support throughout the years.
+    I couldn't have done this without you guys**''') 
+
 
 @bot.event
 async def on_command_error(ctx, error):
