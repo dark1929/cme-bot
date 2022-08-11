@@ -70,7 +70,7 @@ async def jizzon(ctx):
     '          :boot:     :boot:                              :persevere:{}\n'.format(ctx.message.mentions[0].mention)
     await ctx.send(res)
 
-@bot.commands.cooldown(1, 10, commands.BucketType.user)
+@bot.cooldown(1, 10, commands.BucketType.user)
 @bot.command(name='tc')
 async def total_compensation(ctx):
     user_data = {
@@ -79,7 +79,7 @@ async def total_compensation(ctx):
     user_leetcoins = user_data['leetcoins']
     user_leetcoins = float(user_leetcoins)
     user_tc = user_leetcoins * 3.141592
-    
+
     try:
         await ctx.send(f'{ctx.message.author.display_name}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
     except:
