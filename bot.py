@@ -97,8 +97,12 @@ async def dark(ctx):
     **Hey guys, dark here. 8 years ago I said "One Day". Today, I get to say "Day One".
     I'm happy to announce that today I landed my dream job as a junior software engineer at Google where I'll be working with some of the smartest people in the world.
     I would like to thank my mom, my dad, and my discord friends for the support throughout the years.
-    I couldn't have done this without you guys**''') 
+    I couldn't have done this without you guys**''')
 
+@commands.cooldown(1, 30, commands.BucketType.user)
+@bot.command()
+async def laz(ctx): 
+    await ctx.send('https://media.discordapp.net/attachments/940294974539448360/990038597677744128/attachment.gif')
 
 @bot.event
 async def on_command_error(ctx, error):
