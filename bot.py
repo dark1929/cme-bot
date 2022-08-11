@@ -71,17 +71,17 @@ async def jizzon(ctx):
     await ctx.send(res)
 
 @bot.commands.cooldown(1, 10, commands.BucketType.user)
-@bot.command()
-async def tc(ctx):
-    args = ctx.message.content
+@bot.command(name='tc')
+async def total_compensation(ctx):
     user_data = {
-        'leetcoins' : args
+        'leetcoins': ctx.message.content
     }
-    user_leetcoins = int(user_data['leetcoins'])
+    user_leetcoins = user_data['leetcoins']
+    user_leetcoins = float(user_leetcoins)
 
     try:
-        user_tc = (user_leetcoins + 2) * 3.141592
-        await ctx.send(f'{ctx.message.author}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
+        user_tc = user_leetcoins * 3.141592
+        await ctx.send(f'{ctx.message.author.display_name}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
     except:
         await ctx.send('Go back to elementary school and learn some algorithms and data structures.')
 
