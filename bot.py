@@ -70,7 +70,7 @@ async def jizzon(ctx):
     '          :boot:     :boot:                              :persevere:{}\n'.format(ctx.message.mentions[0].mention)
     await ctx.send(res)
 
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 @bot.command(name='tc')
 async def total_compensation(ctx):
     user_data = {
