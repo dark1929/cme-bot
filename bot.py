@@ -69,7 +69,26 @@ async def jizzon(ctx):
     '        :trumpet:     :eggplant:                       :sweat_drops:\n' + \
     '          :boot:     :boot:                              :persevere:{}\n'.format(ctx.message.mentions[0].mention)
     await ctx.send(res)
-    
+
+@bot.commands.cooldown(1, 10, commands.BucketType.user)
+@bot.command()
+async def tc(ctx):
+    args = ctx.message.content
+    user_data = {
+        'leetcoins': args
+    }
+    user_leetcoins = int(user_data['leetcoins'])
+
+    try:
+        user_tc = (user_leetcoins + 2) * 3.141592
+        await ctx.send(f'{ctx.message.author}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
+    except:
+        await ctx.send('Go back to elementary school and learn some algorithms and data structures.')
+
+@commands.cooldown(1, 30, commands.BucketType.user)
+@bot.command()
+async def bassfx(ctx): 
+    await ctx.send('https://cdn.discordapp.com/attachments/832736860886663170/997248777016594462/attachment.gif') 
 
 @bot.event
 async def on_command_error(ctx, error):
