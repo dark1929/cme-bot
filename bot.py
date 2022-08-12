@@ -70,18 +70,18 @@ async def jizzon(ctx):
     '          :boot:     :boot:                              :persevere:{}\n'.format(ctx.message.mentions[0].mention)
     await ctx.send(res)
 
-@bot.commands.cooldown(1, 10, commands.BucketType.user)
-@bot.command()
-async def tc(ctx):
-    args = ctx.message.content
+@commands.cooldown(1, 10, commands.BucketType.user)
+@bot.command(name='tc')
+async def total_compensation(ctx):
     user_data = {
-        'leetcoins': args
+        'leetcoins': ctx.message.content
     }
-    user_leetcoins = int(user_data['leetcoins'])
+    user_leetcoins = user_data['leetcoins']
+    user_leetcoins = float(user_leetcoins)
+    user_tc = user_leetcoins * 3.141592
 
     try:
-        user_tc = (user_leetcoins + 2) * 3.141592
-        await ctx.send(f'{ctx.message.author}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
+        await ctx.send(f'{ctx.message.author.display_name}\'s estimated TC is {round(user_tc):,}k, roughly {round(user_tc/12):,}k after tax.')
     except:
         await ctx.send('Go back to elementary school and learn some algorithms and data structures.')
 
@@ -89,6 +89,20 @@ async def tc(ctx):
 @bot.command()
 async def bassfx(ctx): 
     await ctx.send('https://cdn.discordapp.com/attachments/832736860886663170/997248777016594462/attachment.gif') 
+
+@commands.cooldown(1, 30, commands.BucketType.user)
+@bot.command()
+async def dark(ctx): 
+    await ctx.send('''https://media.discordapp.net/attachments/966368180723400786/1006982434472067153/IMG_2664.png
+    **Hey guys, dark here. 8 years ago I said "One Day". Today, I get to say "Day One".
+    I'm happy to announce that today I landed my dream job as a junior software engineer at Google where I'll be working with some of the smartest people in the world.
+    I would like to thank my mom, my dad, and my discord friends for the support throughout the years.
+    I couldn't have done this without you guys**''')
+
+@commands.cooldown(1, 30, commands.BucketType.user)
+@bot.command()
+async def laz(ctx): 
+    await ctx.send('https://media.discordapp.net/attachments/940294974539448360/990038597677744128/attachment.gif')
 
 @bot.event
 async def on_command_error(ctx, error):
